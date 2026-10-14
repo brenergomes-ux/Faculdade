@@ -1,0 +1,131 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc} % Corrigido aqui
+\usepackage[pt-BR]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx} % Substituto moderno e recomendado para o pacote 'times'
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{mdframed}
+\usepackage{hyperref}
+
+% Configuração das Margens conforme COBEF 2025
+\geometry{
+  a4paper,
+  top=3cm,
+  bottom=2cm,
+  left=2cm,
+  right=2cm
+}
+
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{0pt}
+
+\begin{document}
+
+% Cabeçalho / Barra Lateral COBEF com Logo UFPR
+\begin{mdframed}[topline=false, bottomline=false, rightline=false, linewidth=2.25pt, innerleftmargin=0.3cm, innerrightmargin=0cm]
+  \begin{minipage}[c]{0.70\textwidth}
+    {\fontsize{14pt}{16pt}\selectfont \bfseries AVALIAÇÃO DA INFLUÊNCIA DO QUEBRA-CAVACO NA FORÇA DE CORTE E ESTUDO DA FORMAÇÃO DO CAVACO NO PROCESSO DE TORNEAMENTO}\\[0.3cm]
+    {\small \bfseries Brener Willy Tiago Santos Gomes, Brener.willy@ufpr.br}\\[0.1cm]
+    {\small $^{1}$Universidade Federal do Paraná (UFPR), Departamento de Engenharia Mecânica, Curitiba - PR, Brasil}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.25\textwidth}
+    \centering
+    % Para inserir a logo da UFPR, certifique-se de salvar a imagem como 'logo_ufpr.png' na mesma pasta
+    \includegraphics[width=\linewidth]{logo_ufpr.png} 
+  \end{minipage}
+
+  \includegraphics{Insertos.png}
+  \includegraphics{Nexus-100-2.png}
+
+  \vspace{0.4cm}
+  \noindent\textit{\textbf{Resumo:} Este Trabalho foca na compreensão do impacto da força de corte e da geometria de três diferentes quebra-cavacos no processo de torneamento. Após a compreensão das forças de corte resultantes e a morfologia(estudo da forma) dos cavacos gerados, classificados de acordo com a norma ABNT NBR ISO 3685:2017. A instrumentação contou com dinamômetro piezoelétrico . Foi utilizado o torno MAZAK nexus 100-II video da utilização em anexo.nosso objetivo é relacionar o angulo eefetivo de saída com o consumo de porência e a eficiencia do quebra cavaco, para que assim seja possivel fornecer subsídios para a seleção otimizada do ferramental}\\[0.2cm]
+  \noindent\textit{\textbf{Palavras-chave:} Usinagem, Quebra-cavaco, Força de corte.}
+\end{mdframed}
+
+\vspace{0.5cm}
+
+\section{INTRODUÇÃO}
+O processo de torneamento é amplamente utilizado na indústria metalmecânica. A eficiência e a segurança do processo dependem diretamente do controle da cavaco gerado durante o corte. O objetivo deste trabalho é avaliar experimentalmente como a geometria do quebra-cavaco de ferramentas de metal duro influencia a força de corte e a formação do cavaco no torneamento do aço.
+
+\section{REVISÃO BIBLIOGRÁFICA}
+O controle do cavaco é essencial em operações automatizadas para evitar severos danos à peça e à ferramenta, além de garantir a segurança do operador. De acordo com Trent e Wright (2000), o quebra-cavaco induz deflexão e tensões de dobramento na fita de cavaco contínua até sua ruptura.
+
+Estudos demonstram que a geometria do quebra-cavaco altera o ângulo efetivo de saída ($\gamma_n$), modificando as componentes da força de corte (Astakhov, 2006).
+
+\section{GEOMETRIA DA FERRAMENTA E CÁLCULO DA FORÇA DE CORTE}
+
+\subsection{Parâmetros Geométricos do Inserto e Suporte}
+Para a análise completa do processo de torneamento, determinam-se os seguintes parâmetros geométricos:
+\begin{itemize}
+    \item \textbf{Ângulo de Posição ($\chi_r$):} Ângulo entre a aresta principal de corte e o plano de avanço. Define a espessura usinada ($h = f \cdot \sin \chi_r$).
+    \item \textbf{Ângulo de Folga ($\alpha_n$):} Ângulo entre a superfície de folga da ferramenta e a superfície de corte da peça, evitando o atrito excessivo.
+    \item \textbf{Ângulo de Ponta ($\epsilon_r$):} Ângulo entre a aresta principal e a aresta secundária de corte, influenciando a resistência mecânica do inserto:
+    \begin{equation}
+        \epsilon_r = 180^\circ - (\chi_r + \chi_r')
+    \end{equation}
+    \item \textbf{Raio de Ponta ($r_s$):} Raio de concordância da ponta do inserto, determinante na rugosidade teórica ($R_z \approx \frac{f^2}{8 r_s}$).
+    \item \textbf{Ângulo Efetivo de Saída ($\gamma_n$):} Modificado pelo perfil do quebra-cavaco (rampa ou raio de concordância $r_{qc}$). O ângulo efetivo é calculated por:
+    \begin{equation}
+        \gamma_{n,efetivo} = \gamma_0 + \arctan\left(\frac{h_{qc}}{w_{qc}}\right)
+    \end{equation}
+    Onde $h_{qc}$ é a profundidade/altura da rampa do quebra-cavaco e $w_{qc}$ é a largura da canaleta.
+\end{itemize}
+
+\subsection{Modelo Teórico da Força Efetiva de Corte ($F_c$)}
+A força de corte específica é calculada através da equação clássica de Kienzle:
+\begin{equation}
+    F_c = k_{c1.1} \cdot b \cdot h^{1-m} \cdot K_{\gamma}
+\end{equation}
+Substituindo a largura de corte $b = \frac{a_p}{\sin\chi_r}$ e a espessura de corte $h = f \cdot \sin\chi_r$:
+\begin{equation}
+    F_c = k_{c1.1} \cdot a_p \cdot f^{1-m} \cdot (\sin\chi_r)^{-m} \cdot \left(1 - \frac{\gamma_{efetivo} - \gamma_{ref}}{100}\right)
+\end{equation}
+Onde $k_{c1.1}$ é a força específica de corte para $b=1\text{ mm}$ e $h=1\text{ mm}$, e $m$ é o expoente característico do material ensaiado.
+
+\section{MATERIAIS E MÉTODOS}
+Descreva aqui o procedimento experimental utilizado na aula prática:
+\begin{itemize}
+    \item \textbf{Material do Corpo de Prova:} Tubo mecânico VMEC 134AP (propriedades mecânicas e composição química conforme norma) adotaod sforça específica de corte 2100N/mm2 eo expoente de Kienzle m ou z = 0,26 logo (1-m)=0,74.
+    \item \textbf{Máquina e Instrumentação:} Torno mecânico/CNC MAZAK NEXUS 10-IImunido de dinamômetro piezoelétrico Kistler, modelo Kistler 5070A, ele recebe sinais elétricos(em carga/Coulumbs) e converte esses sinais nume tensão proporcional (Voltdpara medição contínua de forças ($F_c$, $F_f$, $F_p$).
+    \item \textbf{Insertos / Quebra-cavacos:} Apresentar a especificação dos 3 insertos testados segundo catálogo do fabricante modelos(WMNA060108 KCR15, WNMG060108 MP KCURO, WMNG060908 FPKCS010).
+\end{itemize}
+
+\section{RESULTADOS E DISCUSSÃO}
+Foi utilizado o excel para retirar a média de força de corte referênte a cada ferramenta e plotado o gráfico em função do tempo, para cada ferramenta. A seguir, apresento o resultado, nota utilizado o tempo de 50s até 65s onde foi desconsiderado o tempo em vacio da ferramenta, desconsiderado tempo de aproximação e afastamento da ferramenta, onde a força de corte não estabiliza, com exceção do inserto QC_MP e QC_FP, que foi obtido o tempo de 11s até 30s
+Apresente aqui os gráficos de forças obtidos do arquivo de dados e classifique as formas dos cavacos segundo a norma **ABNT NBR ISO 3685:2017** (ex.: cavacos em fita, helicoidais, arcos, etc.).
+
+\section{CONCLUSÕES}
+Foi verificado que o angulo efetivo de saida proporcionado pela quebra_cavaco reduziu a força de corte sem comprometer a quebra eficiente dos cavacos.
+Sintetize os achados verificando se o ângulo efetivo de saída proporcionado pelo quebra-cavaco reduziu a força de corte sem comprometer a quebra eficiente dos cavacos.
+A influencia da profundidade de corte ap e do avanço f na força de corte, Kienzel relacionou  o valor da pressão específica de corte varia com a espessura do corte, podendo ser corrigidor em função da variação do angulo de saida
+
+1. FERRARESI, D. Fundamentos da Usinagem dos Metais. Editora Edgard Blücher. 1977 
+2.  
+DINIZ, A. E. MARCONDES, F. C. COPPINI, N. L. Tecnologia da Usinagem dos Metais. 
+Editora Artliber. 5ª edição. 2005 
+3. TRENT, E.; M. ;WRIGHT, P. K. Metal Cutting. Butterworth-Heinemann. 2000
+
+\section*{AGRADECIMENTOS}
+À Universidade Federal do Paraná (UFPR) e ao Departamento de Engenharia Mecânica pela infraestrutura laboratorial.
+
+\section*{REFERÊNCIAS}
+\begin{enumerate}\setlength{\itemsep}{0pt}
+    
+    \item FERRARESI, D. Fundamentos da Usinagem dos Metais. Editora Edgard Blücher. 1977 
+    \item DINIZ, A. E. MARCONDES, F. C. COPPINI, N. L. Tecnologia da Usinagem dos Metais. 
+            Editora Artliber. 5ª edição. 2005 
+    \item Kienzle, O., 1952. Die Bestimmung von Kräften und Leistungen an Spanenden Werkzeugmaschinen. VDI-Z 94, pp. 299-305.
+    \item Trent, E.M. e Wright, P.K., 2000. Metal Cutting. Butterworth-Heinemann, 4th Edition.
+    \item Astakhov, V.P., 2006. Tribology of Metal Cutting. Elsevier, London.
+    \item ISO 3685, 2017. Tool-life testing with single-point turning tools.
+    \item \item ASTM A519 / ISO standards for VMEC 134AP Mechanical Tubing.
+\end{enumerate}
+
+\section*{RESPONSABILIDADE PELAS INFORMAÇÕES}
+Os autores são os únicos responsáveis pelas informações incluídas neste trabalho.
+
+\end{document}
